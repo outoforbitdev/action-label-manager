@@ -10,8 +10,6 @@ if $dry_run
 then dry_run_arg="--dryRun"
 fi
 
-git config --global --add safe.directory "${GITHUB_WORKSPACE:=.}"
-
 export GITHUB_ACCESS_TOKEN=$github_token
 
-github-label-sync  -l 'labels.json' ${repo_owner}/${repo_name}
+npx github-label-sync  -l 'labels.json' ${repo_owner}/${repo_name}

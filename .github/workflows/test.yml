@@ -28,6 +28,7 @@ jobs:
   update-labels:
       runs-on: ubuntu-latest
       name: Update Labels
+      needs: test-image
       steps:
         - name: Checkout
           uses: actions/checkout@v4
