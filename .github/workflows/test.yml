@@ -25,3 +25,13 @@ jobs:
         uses: outoforbitdev/action-docker-test@v1.0.0-staging.1
         with:
           test-command: sh ./tests.sh
+  update-labels:
+      runs-on: ubuntu-latest
+      name: Update Labels
+      steps:
+        - name: Update Labels
+          uses: ./
+          id: updatelabels
+          with:
+            github-token: ${{ secrets.LABEL_TOKEN }}
+            dry-run: true
