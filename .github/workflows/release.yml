@@ -1,0 +1,91 @@
+name: Release Action
+permissions: read-all
+on:
+  push:
+    branches:
+      - main
+      - beta
+      - dev
+      - staging
+jobs:
+  # ================================ Run Tests ================================
+  # This section should match tests.yml
+  test-image:
+    runs-on: ubuntu-latest
+    name: Test Docker Image
+    outputs:
+      success: $${{steps.testimage.outputs.success}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Test Docker Image
+        id: testimage
+        uses: outoforbitdev/action-docker-test@v1.0.0-staging.1
+        with:
+          test-command: sh ./tests.sh
+  # ============================== Check Version ==============================
+  # Run dry run of action-semantic-release so we know what to tag the Docker 
+  # image in the next step. 
+  # The version _should_ match what we've hardcoded in action.yml
+  semantic-release-dry:
+    runs-on: ubuntu-latest
+    name: Check Release Version
+    needs: test-image
+    if: ${{needs.test-image.outputs.success}}
+    outputs:
+      version: ${{steps.semanticrelease.outputs.next-version}}
+      versionReleased: ${{steps.semanticrelease.outputs.version-released}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Semantic Release
+        uses: outoforbitdev/action-semantic-release@v1.3.6
+        id: semanticrelease
+        with:
+          github-token: ${{ secrets.RELEASE_TOKEN }}
+          dry-run: true
+      - name: Output version
+        run: echo "Latest version is ${{ steps.semanticrelease.outputs.version}}"
+  # ============================== Publish Image ==============================
+  # Use the version from the last job to build, tag, and publish the image 
+  docker-publish:
+    runs-on: ubuntu-latest
+    name: Publish image
+    needs: semantic-release-dry
+    if: ${{needs.semantic-release.outputs.versionReleased}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Docker Publish
+        uses: outoforbitdev/action-docker-publish@v1.2.0-staging.5
+        id: dockerpublish
+        with:
+          docker-username: ${{ secrets.DOCKER_USERNAME }}
+          docker-token: ${{ secrets.DOCKER_TOKEN }}
+          image-name: ${{ vars.IMAGE_NAME }}
+          image-tag: ${{ needs.semantic-release.outputs.version }}
+      - name: Output Tags
+        run: echo "Tag is ${{steps.dockerpublish.output.sha-tag}}"
+  # ============================= Publish Release =============================
+  # Now that the necessary Docker image is published, publish this release. 
+  semantic-release:
+    runs-on: ubuntu-latest
+    name: Publish Release
+    needs: docker-publish
+    outputs:
+      version: ${{steps.semanticrelease.outputs.next-version}}
+      versionReleased: ${{steps.semanticrelease.outputs.version-released}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Semantic Release
+        uses: ./
+        id: semanticrelease
+        with:
+          github-token: ${{ secrets.RELEASE_TOKEN }}
+      - name: Output version
+        run: echo "Latest version is ${{ steps.semanticrelease.outputs.version}}"

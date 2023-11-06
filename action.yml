@@ -1,0 +1,28 @@
+name: "action-label-manager"
+description: "Update labels on a GitHub repo"
+inputs:
+  github-token:
+    description: "Your Github token to allow the action to update labels. If using a fine-grained token, the token must have read and write access to either Issues or Pull requests"
+    required: true
+  repository:
+    description: "The name of the repo in the format owner_name/repo_name. Defaults to the current repository"
+    required: false
+    default: ${{github.repository}}
+  dry-run:
+    description: "Whether to do a dry-run"
+    required: false
+    default: false
+outputs:
+  last-version:
+    description: "The last released version"
+  next-version:
+    description: "The next released version"
+  version-released:
+    description: "Whether a version was released. Note that this would be true even with dry-run=true"
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.github-token }}
+    - ${{ inputs.repository }}
+    - ${{ inputs.dry-run }}

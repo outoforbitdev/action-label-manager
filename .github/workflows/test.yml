@@ -1,0 +1,27 @@
+name: Test Action
+permissions: read-all
+on:
+  pull_request:
+    types: 
+      - opened
+      - reopened
+      - synchronize
+    branches:
+      - main
+      - beta
+      - dev
+      - staging
+jobs:
+  test-image:
+    runs-on: ubuntu-latest
+    name: Test Docker Image
+    outputs:
+      success: $${{steps.testimage.outputs.success}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Test Docker Image
+        id: testimage
+        uses: outoforbitdev/action-docker-test@v1.0.0-staging.1
+        with:
+          test-command: sh ./tests.sh
