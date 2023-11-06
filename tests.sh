@@ -2,4 +2,4 @@
 
 node --version | head -n 1 | grep v20.9.0
 npm --version | head -n 1 | grep 10.1.0
-npx github-label-sync --version | head -n 1 | grep 2.3.1
+npx github-label-sync --version
