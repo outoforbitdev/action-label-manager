@@ -57,7 +57,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Docker Publish
-        uses: outoforbitdev/action-docker-publish@v1.2.0-staging.5
+        uses: outoforbitdev/action-docker-publish@v1.2.0-staging.6
         id: dockerpublish
         with:
           docker-username: ${{ secrets.DOCKER_USERNAME }}
