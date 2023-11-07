@@ -1,0 +1,11 @@
+{
+    "name": "action-label-manager",
+    "description": "",
+    "devDependencies": {
+        "github-label-sync": "^2.3.1"
+    },
+    "bugs": {
+      "url": "https://github.com/outoforbitdev/action-label-manager/issues"
+    },
+    "homepage": "https://github.com/outoforbitdev/action-label-manager#readme"
+  }

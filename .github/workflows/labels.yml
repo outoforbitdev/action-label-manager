@@ -1,0 +1,19 @@
+name: Test Action
+permissions: read-all
+on:
+  issues:
+    types:
+      - opened
+      - labeled
+jobs:
+    update-labels:
+        runs-on: ubuntu-latest
+        name: Update Labels
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v4
+          - name: Update Labels
+            uses: ./
+            id: updatelabels
+            with:
+              github-token: ${{ secrets.LABEL_TOKEN }}
