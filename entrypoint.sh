@@ -11,4 +11,4 @@ fi
 
 export GITHUB_ACCESS_TOKEN=$github_token
 
-npx github-label-sync  -l 'labels.json' ${repository}
+npx github-label-sync  ${dry_run_arg} -l 'labels.json' ${repository}
