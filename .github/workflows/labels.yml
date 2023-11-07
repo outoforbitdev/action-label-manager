@@ -1,16 +1,10 @@
 name: Test Action
 permissions: read-all
 on:
-  pull_request:
-    types: 
+  issues:
+    types:
       - opened
-      - reopened
-      - synchronize
-    branches:
-      - main
-      - beta
-      - dev
-      - staging
+      - labeled
 jobs:
     update-labels:
         runs-on: ubuntu-latest
