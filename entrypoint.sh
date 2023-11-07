@@ -6,7 +6,7 @@ dry_run=$3
 
 dry_run_arg=""
 if $dry_run
-then dry_run_arg="--dryRun"
+then dry_run_arg="--dry-run"
 fi
 
 export GITHUB_ACCESS_TOKEN=$github_token
