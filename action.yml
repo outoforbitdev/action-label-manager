@@ -24,7 +24,7 @@ runs:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
     - run: |
         npx github-label-sync \
-          --access-token ${{ inputs.github_token }} \
+          --access-token ${{ secrets.access_token }} \
           --labels labels.json \
           ${{ inputs.target_repository }}
       shell: bash
