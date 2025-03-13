@@ -1,0 +1,30 @@
+name: action-label-manager
+description: Sync GitHub Labels.
+secrets:
+  access_token:
+    description: GitHub access token to sync labels (`repo` scope required).
+    required: true
+inputs:
+  target_repository:
+    default: ${{ github.repository }}
+    description: GitHub repository where labels are synced.
+    required: false
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+    - run: npm install -g github-label-sync
+      shell: bash
+    - name: Set GitHub Path
+      run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+      shell: bash
+      env:
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
+    - run: |
+        npx github-label-sync \
+          --access-token ${{ inputs.github_token }} \
+          --labels labels.json \
+          ${{ inputs.target_repository }}
+      shell: bash
