@@ -1,10 +1,9 @@
 name: action-label-manager
 description: Sync GitHub Labels.
-secrets:
+inputs:
   access_token:
     description: GitHub access token to sync labels (`repo` scope required).
     required: true
-inputs:
   target_repository:
     default: ${{ github.repository }}
     description: GitHub repository where labels are synced.
@@ -24,7 +23,7 @@ runs:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
     - run: |
         npx github-label-sync \
-          --access-token ${{ secrets.access_token }} \
+          --access-token ${{ inputs.access_token }} \
           --labels labels.json \
           ${{ inputs.target_repository }}
       shell: bash
