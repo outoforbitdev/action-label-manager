@@ -9,7 +9,7 @@ on:
 jobs:
   test-action:
     permissions:
-        contents: write
+        issues: write
     runs-on: ubuntu-latest
     name: Test Action
     steps:
