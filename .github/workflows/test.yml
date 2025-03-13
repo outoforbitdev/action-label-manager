@@ -8,6 +8,8 @@ on:
       - synchronize
 jobs:
   test-action:
+    permissions:
+        contents: write
     runs-on: ubuntu-latest
     name: Test Action
     steps:
