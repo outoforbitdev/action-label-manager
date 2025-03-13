@@ -1,5 +1,5 @@
 # action-label-manager
-A GitHub Action designed to create a release based on the most recent changelog entry. 
+A GitHub Actionto sync labels to a standard set.
 
 <p>
   <a href="https://github.com/outoforbitdev/action-label-manager/actions?query=workflow%3ATest">
