@@ -21,6 +21,8 @@ runs:
     #   shell: bash
     #   env:
     #     GITHUB_ACTION_PATH: ${{ github.action_path }}
+    - run: ls
+      shell: bash
     - run: |
         npx github-label-sync \
           --access-token ${{ inputs.access-token }} \
