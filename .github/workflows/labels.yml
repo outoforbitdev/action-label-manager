@@ -1,6 +1,6 @@
 name: Labels
 permissions: read-all
-on: 
+on:
   issues: 
     types:
       - opened
@@ -25,3 +25,4 @@ jobs:
         id: set-labels
         with:
           access-token: ${{ secrets.GITHUB_TOKEN }}
+          labels-file: fake-labels.json

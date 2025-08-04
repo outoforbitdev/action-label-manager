@@ -6,7 +6,11 @@ inputs:
     required: true
   target-repository:
     default: ${{ github.repository }}
-    description: GitHub repository where labels are synced.
+    description: GitHub repository where labels are synced. Defaults to the current repository.
+    required: false
+  labels-file:
+    default: ""
+    description: Path to a custom labels file (default is `labels.json` in the action directory).
     required: false
 runs:
   using: composite
@@ -17,8 +21,17 @@ runs:
     - run: npm install -g github-label-sync
       shell: bash
     - run: |
-        npx github-label-sync \
+        {
+          if [ -n "${{ inputs.labels-file }}" ]; then
+            npx github-label-sync \
+            --access-token ${{ inputs.access-token }} \
+            --labels ${{ inputs.labels-file }} \
+            ${{ inputs.target-repository }}
+          fi
+        } || {
+          npx github-label-sync \
           --access-token ${{ inputs.access-token }} \
           --labels ${{ github.action_path }}/labels.json \
           ${{ inputs.target-repository }}
+        }
       shell: bash
