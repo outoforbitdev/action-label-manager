@@ -27,7 +27,11 @@ runs:
             npx github-label-sync \
             --access-token ${{ inputs.access-token }} \
             --labels ${{ inputs.labels-file }} \
-            ${{ inputs.target-repository }}
+            ${{ inputs.target-repository }} | tee -a sync.log
+            if grep -q "No labels were found" sync.log; then
+              echo "No labels found in custom file: ${{ inputs.labels-file }}"
+              exit 1
+            fi
             echo "Labels synced from custom file: ${{ inputs.labels-file }}"
           fi
         } || {
