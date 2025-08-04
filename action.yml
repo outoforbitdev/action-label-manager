@@ -25,6 +25,5 @@ runs:
         node-version: 18.x
     - run: npm install -g github-label-sync
       shell: bash
-    - run: |
-        node action.js
+    - run: node ${{ github.action_path }}/action.js
       shell: bash
