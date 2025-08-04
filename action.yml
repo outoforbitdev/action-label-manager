@@ -13,5 +13,5 @@ inputs:
     description: Path to a custom labels file (default is `labels.json` in the action directory).
     required: false
 runs:
-  using: 'node22'
+  using: 'node24'
   main: 'action.js'
