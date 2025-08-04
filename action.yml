@@ -14,16 +14,19 @@ inputs:
     required: false
 runs:
   using: composite
-  env:
-    GITHUB_TOKEN: ${{ inputs.access-token }}
-    REPOSITORY: ${{ inputs.target-repository }}
-    LABELS_FILE: ${{ inputs.labels-file }}
-    DEFAULT_LABELS_FILE: ${{ github.action_path }}/labels.json
   steps:
-    - uses: actions/setup-node@v3
+    - name: Setup Node
+      uses: actions/setup-node@v3
       with:
         node-version: 18.x
-    - run: npm install -g github-label-sync
+    - name: Install Dependencies
+      run: npm install -g github-label-sync
       shell: bash
-    - run: node ${{ github.action_path }}/action.js
+    - name: Run Action
+      env:
+        GITHUB_TOKEN: ${{ inputs.access-token }}
+        REPOSITORY: ${{ inputs.target-repository }}
+        LABELS_FILE: ${{ inputs.labels-file }}
+        DEFAULT_LABELS_FILE: ${{ github.action_path }}/labels.json
+      run: node ${{ github.action_path }}/action.js
       shell: bash
