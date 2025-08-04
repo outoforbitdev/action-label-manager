@@ -90779,7 +90779,7 @@ function requireActionLabelManager () {
 	const accessToken = core.getInput('access-token');
 	const repository = core.getInput('target-repository');
 	const labelsFile = core.getInput('labels-file');
-	const DEFAULT_LABELS_FILE = `${__dirname}/labels.json`;
+	const DEFAULT_LABELS_FILE = `${process.env.GITHUB_ACTION_PATH}/labels.json`;
 
 	console.log("labelsFile:", labelsFile);
 	console.log("defaultLabelsFile:", DEFAULT_LABELS_FILE);
