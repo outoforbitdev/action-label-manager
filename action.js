@@ -1,15 +1,16 @@
 var githubLabelSync = require('github-label-sync');
+const core = require('@actions/core');
 
-const accessToken = process.env.GITHUB_TOKEN;
-const repository = process.env.REPOSITORY;
-var labelsFile = process.env.LABELS_FILE;
-const DEFAULT_LABELS_FILE = process.env.DEFAULT_LABELS_FILE;
+const accessToken = core.getInput('access-token');
+const repository = core.getInput('target-repository');
+const labelsFile = core.getInput('labels-file');
+const DEFAULT_LABELS_FILE = `${__dirname}/labels.json`;
 
 console.log("labelsFile:", labelsFile);
+console.log("defaultLabelsFile:", DEFAULT_LABELS_FILE);
 
 const defaultLabels = JSON.parse(require('fs').readFileSync(DEFAULT_LABELS_FILE, 'utf8'));
 let labels = [];
-let success = false;
 
 if (labelsFile !== "") {
     try {
