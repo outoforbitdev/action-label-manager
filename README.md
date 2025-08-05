@@ -25,6 +25,7 @@ A GitHub Actionto sync labels to a standard set.
 |------|-------------|----------|---------|
 | `access-token` | GitHub token with permissions to update labels (`issues: write`). | :white_check_mark: | N/A |
 | `target-repository` | The name of the repository in which to update labels (e.g. `outoforbitdev/action-label-manager`). | :x: | `${{ github.repository }}$` |
+| `label-file` | The name of a json file with custom labels. | :x: | [default labels](https://github.com/outoforbitdev/action-label-manager/blob/main/labels.json) |
 
 
 ## Usage
@@ -43,4 +44,5 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           target-repository: ${{ github.repository }}
+          label-file: labels.json
 ```

@@ -6,19 +6,12 @@ inputs:
     required: true
   target-repository:
     default: ${{ github.repository }}
-    description: GitHub repository where labels are synced.
+    description: GitHub repository where labels are synced. Defaults to the current repository.
+    required: false
+  labels-file:
+    default: ""
+    description: Path to a custom labels file (default is `labels.json` in the action directory).
     required: false
 runs:
-  using: composite
-  steps:
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 18.x
-    - run: npm install -g github-label-sync
-      shell: bash
-    - run: |
-        npx github-label-sync \
-          --access-token ${{ inputs.access-token }} \
-          --labels ${{ github.action_path }}/labels.json \
-          ${{ inputs.target-repository }}
-      shell: bash
+  using: 'node24'
+  main: 'dist/index.js'
