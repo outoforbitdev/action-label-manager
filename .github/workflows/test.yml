@@ -22,4 +22,4 @@ jobs:
         id: set-labels
         with:
           access-token: ${{ secrets.GITHUB_TOKEN }}
-          labels-file: ${{ github.event_path }}/labels.json
+          labels-file: labels.json
