@@ -91048,7 +91048,6 @@ function requireActionLabelManager () {
 	const accessToken = core.getInput('access-token');
 	const repository = core.getInput('target-repository');
 	const labelsFile = core.getInput('labels-file');
-	`${__dirname}/..`;
 
 	console.log("labelsFile:", labelsFile);
 
