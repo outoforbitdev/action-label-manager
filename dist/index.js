@@ -3,7 +3,7 @@ import require$$1$2 from 'url';
 import require$$1$1 from 'util';
 import require$$0$4 from 'crypto';
 import require$$0$3 from 'buffer';
-import require$$2$1 from 'http';
+import require$$2$2 from 'http';
 import require$$4$1 from 'https';
 import require$$0$5 from 'stream';
 import require$$5$1 from 'zlib';
@@ -20,12 +20,12 @@ import require$$0$9 from 'node:stream';
 import require$$1$7 from 'node:util';
 import require$$0$8 from 'node:events';
 import require$$0$a from 'worker_threads';
-import require$$2$2 from 'perf_hooks';
+import require$$2$3 from 'perf_hooks';
 import require$$5$2 from 'util/types';
 import require$$1$8 from 'console';
 import require$$6$1 from 'string_decoder';
 import require$$0$b from 'diagnostics_channel';
-import require$$2$3 from 'child_process';
+import require$$2$4 from 'child_process';
 import require$$6$2 from 'timers';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -31364,7 +31364,7 @@ function requireForeverAgent () {
 	ForeverAgent.SSL = ForeverAgentSSL;
 
 	var util = require$$1$1
-	  , Agent = require$$2$1.Agent
+	  , Agent = require$$2$2.Agent
 	  , net = require$$0$2
 	  , tls = require$$1$5
 	  , AgentSSL = require$$4$1.Agent;
@@ -32324,7 +32324,7 @@ function requireForm_data () {
 	var CombinedStream = requireCombined_stream();
 	var util = require$$1$1;
 	var path = require$$1$4;
-	var http = require$$2$1;
+	var http = require$$2$2;
 	var https = require$$4$1;
 	var parseUrl = require$$1$2.parse;
 	var fs = require$$1$6;
@@ -41312,7 +41312,7 @@ var properties$j = {
 		type: "string"
 	}
 };
-var require$$2 = {
+var require$$2$1 = {
 	$id: $id$i,
 	$schema: $schema$h,
 	type: type$g,
@@ -41928,7 +41928,7 @@ function requireLib$1 () {
 	lib$1 = {
 	  afterRequest: require$$0,
 	  beforeRequest: require$$1,
-	  browser: require$$2,
+	  browser: require$$2$1,
 	  cache: require$$3$3,
 	  content: require$$4,
 	  cookie: require$$5,
@@ -43476,7 +43476,7 @@ function requireTunnelAgent () {
 	hasRequiredTunnelAgent = 1;
 
 	var tls = require$$1$5
-	  , http = require$$2$1
+	  , http = require$$2$2
 	  , https = require$$4$1
 	  , events = require$$4$2
 	  , assert = require$$0$6
@@ -43956,7 +43956,7 @@ function requireRequest$3 () {
 	if (hasRequiredRequest$3) return request$2;
 	hasRequiredRequest$3 = 1;
 
-	var http = require$$2$1;
+	var http = require$$2$2;
 	var https = require$$4$1;
 	var url = require$$1$2;
 	var util = require$$1$1;
@@ -63897,7 +63897,7 @@ function requireTunnel$1 () {
 	if (hasRequiredTunnel$1) return tunnel$1;
 	hasRequiredTunnel$1 = 1;
 	var tls = require$$1$5;
-	var http = require$$2$1;
+	var http = require$$2$2;
 	var https = require$$4$1;
 	var events = require$$4$2;
 	var util = require$$1$1;
@@ -64616,7 +64616,7 @@ function requireUtil$6 () {
 
 	const assert = require$$0$6;
 	const { kDestroyed, kBodyUsed } = requireSymbols$4();
-	const { IncomingMessage } = require$$2$1;
+	const { IncomingMessage } = require$$2$2;
 	const stream = require$$0$5;
 	const net = require$$0$2;
 	const { InvalidArgumentError } = requireErrors();
@@ -67085,7 +67085,7 @@ function requireUtil$5 () {
 
 	const { redirectStatusSet, referrerPolicySet: referrerPolicyTokens, badPortsSet } = requireConstants$3();
 	const { getGlobalOrigin } = requireGlobal$1();
-	const { performance } = require$$2$2;
+	const { performance } = require$$2$3;
 	const { isBlobLike, toUSVString, ReadableStreamFrom } = requireUtil$6();
 	const assert = require$$0$6;
 	const { isUint8Array } = require$$5$2;
@@ -72290,7 +72290,7 @@ function requireClient () {
 
 	const assert = require$$0$6;
 	const net = require$$0$2;
-	const http = require$$2$1;
+	const http = require$$2$2;
 	const { pipeline } = require$$0$5;
 	const util = requireUtil$6();
 	const timers = requireTimers();
@@ -76895,7 +76895,7 @@ function requireMockUtils () {
 	  kGetNetConnect
 	} = requireMockSymbols();
 	const { buildURL, nop } = requireUtil$6();
-	const { STATUS_CODES } = require$$2$1;
+	const { STATUS_CODES } = require$$2$2;
 	const {
 	  types: {
 	    isPromise
@@ -80667,7 +80667,7 @@ function requireFetch () {
 	const { TransformStream } = require$$14$1;
 	const { getGlobalDispatcher } = requireGlobal();
 	const { webidl } = requireWebidl();
-	const { STATUS_CODES } = require$$2$1;
+	const { STATUS_CODES } = require$$2$2;
 	const GET_OR_HEAD = ['GET', 'HEAD'];
 
 	/** @type {import('buffer').resolveObjectURL} */
@@ -87911,7 +87911,7 @@ function requireLib () {
 	};
 	Object.defineProperty(lib, "__esModule", { value: true });
 	lib.HttpClient = lib.isHttps = lib.HttpClientResponse = lib.HttpClientError = lib.getProxyUrl = lib.MediaTypes = lib.Headers = lib.HttpCodes = void 0;
-	const http = __importStar(require$$2$1);
+	const http = __importStar(require$$2$2);
 	const https = __importStar(require$$4$1);
 	const pm = __importStar(requireProxy());
 	const tunnel = __importStar(requireTunnel());
@@ -89614,7 +89614,7 @@ function requireToolrunner () {
 	toolrunner.argStringToArray = toolrunner.ToolRunner = void 0;
 	const os = __importStar(require$$0$7);
 	const events = __importStar(require$$4$2);
-	const child = __importStar(require$$2$3);
+	const child = __importStar(require$$2$4);
 	const path = __importStar(require$$1$4);
 	const io = __importStar(requireIo());
 	const ioUtil = __importStar(requireIoUtil());
@@ -90768,6 +90768,274 @@ function requireCore () {
 	return core;
 }
 
+var require$$2 = [
+	{
+		name: "breaking",
+		color: "d73a4a",
+		description: "Introduces a breaking change.",
+		aliases: [
+			"breaking change",
+			"breaking-change",
+			"Type: Breaking Change",
+			"type: breaking"
+		]
+	},
+	{
+		name: "effort: 1",
+		color: "91ca55"
+	},
+	{
+		name: "effort: 2",
+		color: "c2e2a2"
+	},
+	{
+		name: "effort: 3",
+		color: "e9f4dc"
+	},
+	{
+		name: "effort: 5",
+		color: "fef6d7"
+	},
+	{
+		name: "effort: 8",
+		color: "fef2c0"
+	},
+	{
+		name: "effort: 13",
+		color: "fbca04"
+	},
+	{
+		name: "good first issue",
+		color: "7057ff",
+		description: "Good for newcomers.",
+		aliases: [
+			"beginner-friendly",
+			"beginner",
+			"good for beginner",
+			"Good for beginners",
+			"good-starter-issue",
+			"starter-issue",
+			"starter",
+			"status: good starter issue"
+		]
+	},
+	{
+		name: "help",
+		color: "0e8a16",
+		aliases: [
+			"help wanted",
+			"Patch Welcome",
+			"status: help wanted",
+			"Status: PR Welcome",
+			"Status: Ready for PR"
+		]
+	},
+	{
+		name: "priority: now",
+		color: "d73a4a",
+		aliases: [
+			"priority: critical",
+			"Priority: Critical"
+		]
+	},
+	{
+		name: "priority: soon",
+		color: "ffb8c6",
+		aliases: [
+			"priority: medium",
+			"Priority: Medium"
+		]
+	},
+	{
+		name: "priority: 2day",
+		color: "fbca04",
+		aliases: [
+			"priority: high",
+			"Priority: High"
+		]
+	},
+	{
+		name: "semantic-release",
+		color: "e6e6e6"
+	},
+	{
+		name: "state: approved",
+		color: "91ca55",
+		description: "Approved to proceed.",
+		aliases: [
+			"approved"
+		]
+	},
+	{
+		name: "state: blocked",
+		color: "d73a4a",
+		description: "Something is blocking action.",
+		aliases: [
+			"blocked",
+			"Status: Blocked",
+			"status: blocked"
+		]
+	},
+	{
+		name: "state: pending",
+		color: "fbca04",
+		description: "Pending requirements, dependencies, data, or more information.",
+		aliases: [
+			"in progress",
+			"on hold",
+			"pending",
+			"Status: In Progress",
+			"Status: Review Needed",
+			"watchlist"
+		]
+	},
+	{
+		name: "state: inactive",
+		color: "e6e6e6",
+		description: "No action needed or possible. The issue is fixed, addressed elsewhere, or out of scope.",
+		aliases: [
+			"duplicate",
+			"invalid",
+			"stale",
+			"Status: Abandoned",
+			"status: duplicate",
+			"status: wontfix",
+			"wont-fix",
+			"wontfix"
+		]
+	},
+	{
+		name: "type: bug",
+		color: "d73a4a",
+		description: "Something isn't working.",
+		aliases: [
+			"bug",
+			"Type: Bug"
+		]
+	},
+	{
+		name: "type: chore",
+		color: "fef2c0",
+		description: "Converting measurements, reorganizing folder structure, and less impactful tasks.",
+		aliases: [
+			"chore",
+			"dependabot",
+			"dependencies",
+			"dependency",
+			"greenkeeper",
+			"legal",
+			"maintenance",
+			"Type: Maintenance",
+			"type: maintenance"
+		]
+	},
+	{
+		name: "type: discussion",
+		color: "d4c5f9",
+		description: "Questions, proposals and info that requires discussion.",
+		aliases: [
+			"discussion",
+			"feedback",
+			"idea",
+			"Idea",
+			"Proposal",
+			"proposal",
+			"question",
+			"type: design",
+			"Type: Question",
+			"type: question"
+		]
+	},
+	{
+		name: "type: docs",
+		color: "fef2c0",
+		description: "Related to documentation and information.",
+		aliases: [
+			"doc",
+			"docs",
+			"document",
+			"documentation",
+			"documents",
+			"Type: Documentation",
+			"type: documentation"
+		]
+	},
+	{
+		name: "type: feature",
+		color: "5ebeff",
+		description: "Brand new functionality, features, pages, workflows, endpoints, etc.",
+		aliases: [
+			"addition",
+			"enhancement",
+			"feature",
+			"type: enhancement",
+			"Type: Feature"
+		]
+	},
+	{
+		name: "type: fix",
+		color: "91ca55",
+		description: "Iterations on existing features or infrastructure.",
+		aliases: [
+			"fix",
+			"improvement",
+			"optimization",
+			"refactor",
+			"Type: Fix",
+			"Type: Refactoring"
+		]
+	},
+	{
+		name: "type: security",
+		color: "d73a4a",
+		description: "Something is vulnerable or not secure.",
+		aliases: [
+			"security"
+		]
+	},
+	{
+		name: "type: testing",
+		color: "fbca04",
+		description: "Related to testing.",
+		aliases: [
+			"test",
+			"testing"
+		]
+	},
+	{
+		name: "work: chaotic",
+		color: "fbca04",
+		description: "The situation is chaotic, novel practices used.",
+		aliases: [
+			"chaotic"
+		]
+	},
+	{
+		name: "work: complex",
+		color: "d4c5f9",
+		description: "The situation is complex, emergent practices used.",
+		aliases: [
+			"complex"
+		]
+	},
+	{
+		name: "work: complicated",
+		color: "ffb8c6",
+		description: "The situation is complicated, good practices used.",
+		aliases: [
+			"complicated"
+		]
+	},
+	{
+		name: "work: obvious",
+		color: "91ca55",
+		description: "The situation is obvious, best practices used.",
+		aliases: [
+			"obvious"
+		]
+	}
+];
+
 var hasRequiredActionLabelManager;
 
 function requireActionLabelManager () {
@@ -90775,17 +91043,15 @@ function requireActionLabelManager () {
 	hasRequiredActionLabelManager = 1;
 	var githubLabelSync = requireGithubLabelSync();
 	const core = requireCore();
+	const defaultLabels = require$$2; // Default labels file
 
 	const accessToken = core.getInput('access-token');
 	const repository = core.getInput('target-repository');
 	const labelsFile = core.getInput('labels-file');
-	const actionPath = `${__dirname}/..`;
-	const DEFAULT_LABELS_FILE = `${actionPath}/labels.json`;
+	`${__dirname}/..`;
 
 	console.log("labelsFile:", labelsFile);
-	console.log("defaultLabelsFile:", DEFAULT_LABELS_FILE);
 
-	const defaultLabels = JSON.parse(require$$1$6.readFileSync(DEFAULT_LABELS_FILE, 'utf8'));
 	let labels = [];
 
 	if (labelsFile !== "") {
