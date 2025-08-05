@@ -91044,6 +91044,7 @@ function requireActionLabelManager () {
 	var githubLabelSync = requireGithubLabelSync();
 	const core = requireCore();
 	const defaultLabels = require$$2; // Default labels file
+	const fs = require$$1$6;
 
 	const accessToken = core.getInput('access-token');
 	const repository = core.getInput('target-repository');
@@ -91055,7 +91056,7 @@ function requireActionLabelManager () {
 
 	if (labelsFile !== "") {
 	    try {
-	        labels = JSON.parse(require('fs').readFileSync(labelsFile, 'utf8'));
+	        labels = JSON.parse(fs.readFileSync(labelsFile, 'utf8'));
 	        syncLabels(
 	            accessToken, 
 	            repository, 

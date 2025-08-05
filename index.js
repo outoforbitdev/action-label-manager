@@ -1,6 +1,7 @@
 var githubLabelSync = require('github-label-sync');
 const core = require('@actions/core');
 const defaultLabels = require('./labels.json'); // Default labels file
+const fs = require('fs');
 
 const accessToken = core.getInput('access-token');
 const repository = core.getInput('target-repository');
@@ -12,7 +13,7 @@ let labels = [];
 
 if (labelsFile !== "") {
     try {
-        labels = JSON.parse(require('fs').readFileSync(labelsFile, 'utf8'));
+        labels = JSON.parse(fs.readFileSync(labelsFile, 'utf8'));
         syncLabels(
             accessToken, 
             repository, 
