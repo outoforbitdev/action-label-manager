@@ -22,4 +22,4 @@ jobs:
         id: set-labels
         with:
           access-token: ${{ secrets.GITHUB_TOKEN }}
-          labels-file: labels.json
+          labels-file: fake-labels.json
