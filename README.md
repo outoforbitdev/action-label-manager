@@ -1,5 +1,9 @@
 # action-label-manager
-A GitHub Actionto sync labels to a standard set.
+
+> [!WARNING]
+> This action is deprecated and no longer maintained. Use the [`label-manager.yml` reusable workflow](https://github.com/outoforbitdev/reusable-workflows-library#label-manageryml) instead.
+
+A GitHub Action to sync labels to a standard set.
 
 <p>
   <a href="https://github.com/outoforbitdev/action-label-manager/actions?query=workflow%3ATest">
@@ -19,7 +23,45 @@ A GitHub Actionto sync labels to a standard set.
   </a>
 </p>
 
-## Inputs
+## Migrating to the reusable workflow
+
+The default labels now live in [`src/labels.json`](https://github.com/outoforbitdev/reusable-workflows-library/blob/main/src/labels.json) in `reusable-workflows-library`.
+
+Replace the job that uses `outoforbitdev/action-label-manager@...` with a call to the reusable workflow:
+
+```yml
+name: Sync Labels
+on:
+  issues:
+    types:
+      - opened
+      - labeled
+  pull_request:
+    types:
+      - opened
+      - labeled
+
+permissions: {}
+
+jobs:
+  labels:
+    permissions:
+      issues: write
+    uses: outoforbitdev/reusable-workflows-library/.github/workflows/label-manager.yml@<version>
+    # Optional: replace the default labels with your own file.
+    # with:
+    #   labels-file: labels.json
+```
+
+| Action input | Reusable workflow equivalent |
+|--------------|------------------------------|
+| `access-token` | Optional `access-token` secret. Defaults to `GITHUB_TOKEN`. |
+| `target-repository` | `target-repository` input. Defaults to the calling repository. |
+| `labels-file` | `labels-file` input. |
+
+The workflow does not require a checkout step. Existing tags and releases of this action remain available, so workflows pinned to it keep working.
+
+## Inputs (deprecated)
 
 | Name | Description | Required | Default |
 |------|-------------|----------|---------|
