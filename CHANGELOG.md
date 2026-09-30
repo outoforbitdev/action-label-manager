@@ -1,3 +1,7 @@
+## Unreleased
+
+- deprecate this action in favor of the `label-manager.yml` reusable workflow in `outoforbitdev/reusable-workflows-library`.
+
 ## 0.0.3 (2025-08-04)
 
 - allow using a custom `labels.json` file.
